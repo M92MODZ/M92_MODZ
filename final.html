@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>M92_MODZ — Get Your Key</title>
+<link rel="stylesheet" href="style.css"/>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4285577993065607" crossorigin="anonymous"></script>
+<style>
+  .final-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+    gap: 1.5rem;
+    text-align: center;
+  }
+
+  .success-icon {
+    width: 90px; height: 90px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    animation: popIn 0.5s ease;
+  }
+
+  @keyframes popIn {
+    0%   { transform: scale(0); opacity: 0; }
+    80%  { transform: scale(1.1); }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+  .final-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--accent2);
+    letter-spacing: 2px;
+  }
+
+  .final-desc {
+    color: var(--muted);
+    font-size: 0.95rem;
+    max-width: 400px;
+    line-height: 1.7;
+  }
+
+  .progress-bar {
+    display: flex;
+    gap: 0.5rem;
+  }
+  .prog-dot {
+    width: 36px; height: 6px;
+    border-radius: 3px;
+    background: var(--accent);
+  }
+
+  .btn-telegram {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: #229ED9;
+    color: #fff;
+    padding: 1rem 2.5rem;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: opacity 0.2s, transform 0.2s;
+    margin-top: 0.5rem;
+  }
+  .btn-telegram:hover { opacity: 0.85; transform: translateY(-2px); }
+
+  .steps-done {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .done-chip {
+    background: var(--surface);
+    border: 1px solid var(--accent);
+    border-radius: 20px;
+    padding: 0.35rem 1rem;
+    font-size: 0.8rem;
+    color: var(--accent2);
+  }
+
+  .ad-bottom {
+    width: 100%;
+    max-width: 700px;
+    min-height: 90px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-brand">⚡ M92_MODZ</div>
+  <div class="lang-switcher">
+    <button onclick="setLang('en')">🇬🇧</button>
+    <button onclick="setLang('ar')">🇸🇦</button>
+    <button onclick="setLang('es')">🇪🇸</button>
+    <button onclick="setLang('fr')">🇫🇷</button>
+    <button onclick="setLang('de')">🇩🇪</button>
+  </div>
+</nav>
+
+<div class="final-wrapper">
+
+  <!-- All done progress -->
+  <div class="progress-bar">
+    <div class="prog-dot"></div>
+    <div class="prog-dot"></div>
+    <div class="prog-dot"></div>
+  </div>
+
+  <!-- Success icon -->
+  <div class="success-icon">✅</div>
+
+  <h1 class="final-title" data-i18n="final_title">You're Done!</h1>
+
+  <div class="steps-done">
+    <span class="done-chip">✓ Step 1</span>
+    <span class="done-chip">✓ Step 2</span>
+    <span class="done-chip">✓ Step 3</span>
+  </div>
+
+  <p class="final-desc" data-i18n="final_desc">
+    All steps completed! Open the Telegram bot below, type /start and receive your 24h key instantly.
+  </p>
+
+  <!-- Telegram Button -->
+  <a href="https://t.me/YourBotUsername" target="_blank" class="btn-telegram">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+      <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/>
+    </svg>
+    <span data-i18n="final_btn">Open Telegram Bot</span>
+  </a>
+
+  <p style="color:var(--muted);font-size:0.8rem" data-i18n="final_note">
+    Type /start in the bot to receive your key 🔑
+  </p>
+
+  <!-- Bottom Ad -->
+  <div class="ad-bottom">
+    <ins class="adsbygoogle"
+         style="display:block;width:320px;height:50px"
+         data-ad-client="ca-pub-4285577993065607"
+         data-ad-slot="AUTO"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+</div>
+
+<script src="i18n.js"></script>
+</body>
+</html>

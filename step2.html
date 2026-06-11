@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>M92_MODZ — Step 1</title>
+<link rel="stylesheet" href="style.css"/>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4285577993065607" crossorigin="anonymous"></script>
+<style>
+  .step-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
+    gap: 1.5rem;
+  }
+
+  .progress-bar {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .prog-dot {
+    width: 36px; height: 6px;
+    border-radius: 3px;
+    background: var(--border);
+  }
+  .prog-dot.active { background: var(--accent2); }
+  .prog-dot.done   { background: var(--accent); }
+
+  .step-label {
+    color: var(--muted);
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .ad-frame {
+    width: 100%;
+    max-width: 700px;
+    min-height: 280px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    font-size: 0.85rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Ad stickers / banners decoration */
+  .ad-sticker {
+    position: absolute;
+    border-radius: 8px;
+    opacity: 0.15;
+  }
+  .ad-sticker-1 { width:120px; height:60px; background:var(--accent); top:20px; left:20px; transform:rotate(-5deg); }
+  .ad-sticker-2 { width:80px;  height:80px; background:var(--accent2); bottom:30px; right:40px; border-radius:50%; }
+  .ad-sticker-3 { width:160px; height:40px; background:var(--accent); bottom:20px; left:60px; transform:rotate(3deg); }
+
+  .ad-inner {
+    z-index: 1;
+    text-align: center;
+  }
+
+  .timer-ring {
+    width: 90px; height: 90px;
+    border-radius: 50%;
+    background: conic-gradient(var(--accent2) 0%, var(--border) 0%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    transition: background 0.5s;
+    position: relative;
+  }
+  .timer-ring::after {
+    content: '';
+    position: absolute;
+    width: 70px; height: 70px;
+    background: var(--surface);
+    border-radius: 50%;
+  }
+  .timer-num {
+    position: relative;
+    z-index: 1;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--accent2);
+  }
+
+  .timer-label {
+    color: var(--muted);
+    font-size: 0.85rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .btn-continue {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #fff;
+    padding: 0.85rem 2.5rem;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s, transform 0.2s;
+    text-decoration: none;
+  }
+  .btn-continue.visible {
+    opacity: 1;
+    pointer-events: all;
+  }
+  .btn-continue:hover { transform: translateY(-2px); }
+
+  .key-info {
+    color: var(--muted);
+    font-size: 0.8rem;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-brand">⚡ M92_MODZ</div>
+  <div class="lang-switcher">
+    <button onclick="setLang('en')">🇬🇧</button>
+    <button onclick="setLang('ar')">🇸🇦</button>
+    <button onclick="setLang('es')">🇪🇸</button>
+    <button onclick="setLang('fr')">🇫🇷</button>
+    <button onclick="setLang('de')">🇩🇪</button>
+  </div>
+</nav>
+
+<div class="step-wrapper">
+
+  <!-- Progress -->
+  <div class="progress-bar">
+    <div class="prog-dot done"></div>
+    <div class="prog-dot active"></div>
+    <div class="prog-dot"></div>
+  </div>
+  <div class="step-label" data-i18n="step_label_2">Step 2 of 3</div>
+
+  <!-- Ad Frame -->
+  <div class="ad-frame">
+    <div class="ad-sticker ad-sticker-1"></div>
+    <div class="ad-sticker ad-sticker-2"></div>
+    <div class="ad-sticker ad-sticker-3"></div>
+    <div class="ad-inner">
+      <!-- Adsterra / AdSense slot here -->
+      <ins class="adsbygoogle"
+           style="display:block;width:320px;height:100px"
+           data-ad-client="ca-pub-4285577993065607"
+           data-ad-slot="AUTO"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </div>
+
+  <!-- Timer -->
+  <div class="timer-ring" id="ring">
+    <span class="timer-num" id="countdown">10</span>
+  </div>
+  <div class="timer-label" data-i18n="timer_wait">Please wait...</div>
+
+  <!-- Continue Button -->
+  <a href="step3.html" class="btn-continue" id="continueBtn" data-i18n="btn_continue">Continue →</a>
+
+  <div class="key-info" data-i18n="steps_left_2">1 more step to get your key 🔑</div>
+
+</div>
+
+<script src="i18n.js"></script>
+<script>
+  let seconds = 10;
+  const ring = document.getElementById('ring');
+  const num  = document.getElementById('countdown');
+  const btn  = document.getElementById('continueBtn');
+
+  const interval = setInterval(() => {
+    seconds--;
+    num.textContent = seconds;
+    const pct = ((10 - seconds) / 10) * 100;
+    ring.style.background = `conic-gradient(var(--accent2) ${pct}%, var(--border) ${pct}%)`;
+
+    if (seconds <= 0) {
+      clearInterval(interval);
+      num.textContent = '✓';
+      btn.classList.add('visible');
+    }
+  }, 1000);
+</script>
+</body>
+</html>

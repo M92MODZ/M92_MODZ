@@ -128,3 +128,74 @@ function applyLang(lang) {
   const lang = saved || (supported.includes(browser) ? browser : "en");
   applyLang(lang);
 })();
+
+// ── Extra keys for step pages ──
+const extraKeys = {
+  en: {
+    step_label_1: "Step 1 of 3", step_label_2: "Step 2 of 3", step_label_3: "Step 3 of 3",
+    timer_wait: "Please wait...",
+    btn_continue: "Continue →",
+    steps_left_1: "2 more steps to get your key 🔑",
+    steps_left_2: "1 more step to get your key 🔑",
+    steps_left_3: "Last step! Almost there 🔑",
+    final_title: "You're Done!",
+    final_desc: "All steps completed! Open the Telegram bot below, type /start and receive your 24h key instantly.",
+    final_btn: "Open Telegram Bot",
+    final_note: "Type /start in the bot to receive your key 🔑",
+  },
+  ar: {
+    step_label_1: "الخطوة 1 من 3", step_label_2: "الخطوة 2 من 3", step_label_3: "الخطوة 3 من 3",
+    timer_wait: "انتظر من فضلك...",
+    btn_continue: "متابعة ←",
+    steps_left_1: "خطوتان أخريان للحصول على مفتاحك 🔑",
+    steps_left_2: "خطوة أخيرة للحصول على مفتاحك 🔑",
+    steps_left_3: "الخطوة الأخيرة! اكتملت تقريباً 🔑",
+    final_title: "انتهيت!",
+    final_desc: "اكتملت جميع الخطوات! افتح بوت تيليجرام أدناه واكتب /start لتستلم مفتاحك فوراً.",
+    final_btn: "فتح بوت تيليجرام",
+    final_note: "اكتب /start في البوت لاستلام مفتاحك 🔑",
+  },
+  es: {
+    step_label_1: "Paso 1 de 3", step_label_2: "Paso 2 de 3", step_label_3: "Paso 3 de 3",
+    timer_wait: "Por favor espera...",
+    btn_continue: "Continuar →",
+    steps_left_1: "2 pasos más para obtener tu clave 🔑",
+    steps_left_2: "1 paso más para obtener tu clave 🔑",
+    steps_left_3: "¡Último paso! 🔑",
+    final_title: "¡Listo!",
+    final_desc: "¡Todos los pasos completados! Abre el bot de Telegram, escribe /start y recibe tu clave al instante.",
+    final_btn: "Abrir Bot de Telegram",
+    final_note: "Escribe /start en el bot para recibir tu clave 🔑",
+  },
+  fr: {
+    step_label_1: "Étape 1 sur 3", step_label_2: "Étape 2 sur 3", step_label_3: "Étape 3 sur 3",
+    timer_wait: "Veuillez patienter...",
+    btn_continue: "Continuer →",
+    steps_left_1: "2 étapes de plus pour obtenir ta clé 🔑",
+    steps_left_2: "1 étape de plus pour obtenir ta clé 🔑",
+    steps_left_3: "Dernière étape ! 🔑",
+    final_title: "C'est fait !",
+    final_desc: "Toutes les étapes sont complétées ! Ouvre le bot Telegram, tape /start et reçois ta clé instantanément.",
+    final_btn: "Ouvrir le Bot Telegram",
+    final_note: "Tape /start dans le bot pour recevoir ta clé 🔑",
+  },
+  de: {
+    step_label_1: "Schritt 1 von 3", step_label_2: "Schritt 2 von 3", step_label_3: "Schritt 3 von 3",
+    timer_wait: "Bitte warten...",
+    btn_continue: "Weiter →",
+    steps_left_1: "2 weitere Schritte für deinen Schlüssel 🔑",
+    steps_left_2: "1 weiterer Schritt für deinen Schlüssel 🔑",
+    steps_left_3: "Letzter Schritt! 🔑",
+    final_title: "Fertig!",
+    final_desc: "Alle Schritte abgeschlossen! Öffne den Telegram-Bot, tippe /start und erhalte sofort deinen Schlüssel.",
+    final_btn: "Telegram-Bot öffnen",
+    final_note: "Tippe /start im Bot, um deinen Schlüssel zu erhalten 🔑",
+  },
+};
+
+// Merge extra keys into main translations
+Object.keys(extraKeys).forEach(lang => {
+  if (translations[lang]) {
+    Object.assign(translations[lang], extraKeys[lang]);
+  }
+});
