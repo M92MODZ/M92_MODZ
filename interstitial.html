@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>M92_MODZ</title>
+<link rel="stylesheet" href="style.css"/>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4285577993065607" crossorigin="anonymous"></script>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  background: var(--bg);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Top bar ── */
+.ad-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.25rem;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+.ad-topbar-brand {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  color: var(--accent2);
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+}
+.ad-skip-counter {
+  font-size: 0.8rem;
+  color: var(--muted);
+  background: var(--border);
+  padding: 0.3rem 0.85rem;
+  border-radius: 20px;
+}
+
+/* ── Ad container ── */
+.ad-fullscreen {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  gap: 1.25rem;
+  position: relative;
+}
+
+/* Big ad slot */
+.ad-slot-big {
+  width: 100%;
+  max-width: 500px;
+  min-height: 300px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Decorative stickers behind ad */
+.sticker {
+  position: absolute;
+  border-radius: 8px;
+  opacity: 0.08;
+  pointer-events: none;
+}
+.s1 { width:140px;height:70px;  background:var(--accent);  top:15px;  left:10px;  transform:rotate(-6deg); }
+.s2 { width:90px; height:90px;  background:var(--accent2); top:20px;  right:20px; border-radius:50%; }
+.s3 { width:180px;height:45px;  background:var(--accent);  bottom:20px;left:30px; transform:rotate(4deg); }
+.s4 { width:60px; height:60px;  background:var(--accent2); bottom:25px;right:15px;border-radius:50%; }
+
+.ad-slot-inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+/* ── Bottom bar ── */
+.ad-bottombar {
+  padding: 1rem 1.25rem;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.progress-track {
+  width: 100%;
+  max-width: 400px;
+  height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  border-radius: 2px;
+  transition: width 1s linear;
+}
+
+.btn-skip {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #fff;
+  padding: 0.85rem 3rem;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s, transform 0.2s;
+  text-decoration: none;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+.btn-skip.visible {
+  opacity: 1;
+  pointer-events: all;
+}
+.btn-skip:hover { transform: translateY(-2px); }
+
+.ad-note {
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+</style>
+</head>
+<body>
+
+<!-- Top Bar -->
+<div class="ad-topbar">
+  <div class="ad-topbar-brand">⚡ M92_MODZ</div>
+  <div class="ad-skip-counter" id="skipCounter">Skip in <span id="skipNum">5</span>s</div>
+</div>
+
+<!-- Full Screen Ad -->
+<div class="ad-fullscreen">
+  <div class="ad-slot-big">
+    <div class="sticker s1"></div>
+    <div class="sticker s2"></div>
+    <div class="sticker s3"></div>
+    <div class="sticker s4"></div>
+    <div class="ad-slot-inner">
+      <!-- AdSense interstitial slot -->
+      <ins class="adsbygoogle"
+           style="display:block;width:300px;height:250px"
+           data-ad-client="ca-pub-4285577993065607"
+           data-ad-slot="AUTO"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </div>
+</div>
+
+<!-- Bottom Bar -->
+<div class="ad-bottombar">
+  <div class="progress-track">
+    <div class="progress-fill" id="progressFill"></div>
+  </div>
+  <a href="#" class="btn-skip" id="skipBtn">Continue →</a>
+  <div class="ad-note" id="adNote">Please wait 5 seconds...</div>
+</div>
+
+<script src="i18n.js"></script>
+<script>
+  // Get destination from URL param: interstitial.html?next=step2.html
+  const params   = new URLSearchParams(window.location.search);
+  const nextPage = params.get('next') || 'step2.html';
+
+  const skipBtn  = document.getElementById('skipBtn');
+  const skipNum  = document.getElementById('skipNum');
+  const skipCtr  = document.getElementById('skipCounter');
+  const fill     = document.getElementById('progressFill');
+  const note     = document.getElementById('adNote');
+
+  skipBtn.href = nextPage;
+
+  let seconds = 5;
+  const total = 5;
+
+  // Animate progress bar
+  setTimeout(() => { fill.style.width = '100%'; }, 100);
+
+  const interval = setInterval(() => {
+    seconds--;
+    skipNum.textContent = seconds;
+
+    if (seconds <= 0) {
+      clearInterval(interval);
+      skipCtr.textContent = '✓ Done';
+      skipCtr.style.background = 'var(--accent)';
+      skipCtr.style.color = '#fff';
+      note.textContent = 'You can continue now!';
+      skipBtn.textContent = 'Continue →';
+      skipBtn.classList.add('visible');
+    }
+  }, 1000);
+</script>
+</body>
+</html>
